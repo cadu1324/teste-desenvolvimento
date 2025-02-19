@@ -1,0 +1,29 @@
+# Dependências
+node_modules
+
+# Arquivos de log
+*.log
+
+# Arquivos de configuração do VS Code
+.vscode/
+
+# Arquivos de cache
+.cache/
+.eslintcache
+.prettiercache
+
+# Arquivos de ambiente
+.env
+
+# Arquivos temporários
+tmp/
+temp/
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+
+# Outros
+.history
+*.swp
+*~
