@@ -3,7 +3,6 @@ import auth from '../middlewares/auth';
 
 const router = express.Router();
 
-router.get('/profile', auth.verify, () => {});
+router.get('/test', auth.verify, async (_, res):Promise<any> => res.json({message: 'ok'}));
 
 export default router;
-

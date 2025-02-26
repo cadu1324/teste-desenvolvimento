@@ -14,7 +14,6 @@ const databaseConfig = {
 types.setTypeParser(types.builtins.NUMERIC, (value) => parseFloat(value));
 
 const pool = new Client({
-  ssl: { rejectUnauthorized: false },
   connectionString: `postgres://${databaseConfig.user}:${databaseConfig.password}@${databaseConfig.host}:${databaseConfig.port}/${databaseConfig.database}`,
 });
 

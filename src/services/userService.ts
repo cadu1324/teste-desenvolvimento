@@ -1,21 +1,31 @@
-import userRepository from '../repositories/userRepository'; // Importe o repositório
-import UserLoginBody from '../types/userTypes'; // Importe o tipo do body
+import userRepository from '../repositories/userRepository';
+import UserLoginBody from '../types/userTypes'; 
 
-async function login(body: UserLoginBody) {
+async function createUser(data: UserLoginBody): Promise<UserLoginBody | null> {
   try {
-    const user = await userRepository.userLogin(body); // Chama a função do repositório
-
-    return user; // Retorna o usuário (ou null se não encontrado)
-
+    const user = await userRepository.createUser(data);
+    return user;
   } catch (error) {
-    console.error('Erro ao fazer login na service:', error);
-    throw error; // Re-lança o erro para ser tratado no controller
+    console.error("Erro ao criar usuário na service:", error);
+    throw error; 
   }
 }
 
-async function updatePassword(email: string, data: Partial<UserLoginBody['password']>) {
+
+async function login(body: UserLoginBody) {
   try {
-    const updatedUser = await userRepository.updateUser(email, data);
+    const user = await userRepository.userLogin(body); 
+    return user; 
+
+  } catch (error) {
+    console.error('Erro ao fazer login na service:', error);
+    throw error; 
+  }
+}
+
+async function updatePassword(email: string, password: Partial<UserLoginBody['password']>) {
+  try {
+    const updatedUser = await userRepository.updateUser(email, password);
     return updatedUser;
   } catch (error) {
     console.error("Erro ao atualizar usuário na service:", error);
@@ -24,6 +34,7 @@ async function updatePassword(email: string, data: Partial<UserLoginBody['passwo
 }
 
 export default {
+  createUser,
   login,
   updatePassword
 };

@@ -5,7 +5,7 @@ require('dotenv').config();
 
 const TOKEN_PASS = process.env.TOKEN_PASS || '';
 
-function verify(req: Request, res: Response, next: NextFunction) {
+async function verify(req: Request, res: Response, next: NextFunction):Promise<any> {
   if (req.method === 'OPTIONS') {
     return res.status(204).end();
   }
